@@ -1,4 +1,409 @@
-/* --- (前回のCSSは省略) --- */
+/* --- 基本設定 & カラーパレット --- */
+:root {
+    --bg-color: #F8F6F0; /* クリーム色 */
+    --main-green: #2A4B40; /* メインの濃い緑 */
+    --accent-green: #3B6B5B; /* アクセントの緑 */
+    --accent-yellow: #f8c030; /* アクセントの黄色 */
+    --text-color: #333;
+    --white-color: #FFFFFF;
+    --font-serif: 'Noto Serif JP', serif;
+    --font-sans: 'Noto Sans JP', sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.8;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    font-size: 16px;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    color: var(--main-green);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-green);
+    margin-bottom: 40px;
+}
+
+.section-text {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+.section-text strong {
+    color: var(--accent-green);
+    font-weight: bold;
+}
+
+.sp-only {
+    display: none;
+}
+
+/* --- フェードインアニメーション --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* アニメーションの遅延設定 */
+.seminar-card:nth-child(2), .purpose-item:nth-child(2), .benefit-item:nth-child(2) { transition-delay: 0.1s; }
+.seminar-card:nth-child(3), .benefit-item:nth-child(3) { transition-delay: 0.2s; }
+.seminar-card:nth-child(4) { transition-delay: 0.3s; }
+
+
+/* --- ボタン --- */
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #ffd700, var(--accent-yellow));
+    color: var(--main-green);
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 2px solid var(--white-color);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+
+/* --- ファーストビュー (hero) --- */
+.hero {
+    background-color: var(--main-green);
+    color: var(--white-color);
+    padding: 60px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+}
+.hero-content {
+    text-align: center;
+    max-width: 50%;
+    padding: 0 40px;
+}
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+.hero-catchphrase {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 40px;
+}
+.hero-image-container {
+    max-width: 50%;
+    padding: 0 20px;
+}
+.hero-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 12px;
+}
+
+/* --- 導入 (intro) --- */
+.intro {
+    background-color: var(--white-color);
+}
+
+/* --- ベネフィット (benefit) --- */
+.benefit {
+    background-color: var(--bg-color);
+}
+
+/* --- セミナー紹介 (seminars) --- */
+.seminars {
+    background-color: var(--white-color);
+}
+.seminar-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+.seminar-card {
+    background: var(--bg-color);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.seminar-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+.seminar-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+.seminar-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--accent-green);
+    margin-bottom: 10px;
+}
+.seminar-description {
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+.cta-area {
+    text-align: center;
+}
+
+/* --- 支援の使い道 (purpose) --- */
+.purpose {
+    background-color: var(--accent-green);
+    color: var(--white-color);
+}
+.purpose .section-title { color: var(--white-color); }
+.purpose .section-text { max-width: 100%; }
+.purpose-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+.purpose-item {
+    background: rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 12px;
+}
+.purpose-item h4 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--accent-yellow);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+.purpose-item ul {
+    list-style: '🌱 ';
+    padding-left: 25px;
+}
+.purpose-item ul li {
+    margin-bottom: 10px;
+}
+
+/* --- その他の特典 (other-benefits) --- */
+.other-benefits {
+    background-color: var(--bg-color);
+}
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    text-align: center;
+}
+.benefit-item {
+    padding: 20px;
+}
+.benefit-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    line-height: 1;
+}
+.benefit-title {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    color: var(--accent-green);
+    margin-bottom: 10px;
+}
+
+/* --- こんな方におすすめ (recommend) --- */
+.recommend {
+    background-color: var(--white-color);
+}
+.recommend-list {
+    max-width: 800px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+}
+.recommend-list li {
+    background: var(--bg-color);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border-left: 5px solid var(--accent-green);
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* transitionを追加 */
+}
+.recommend-list li:hover {
+    transform: translateY(-5px) scale(1.02); /* ホバー時の動き */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.08); /* 影を追加 */
+}
+.recommend-list li strong {
+    color: var(--main-green);
+    font-size: 1.2rem;
+}
+
+/* --- 登録手順 (register) --- */
+.steps-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+}
+.step {
+    text-align: center;
+    max-width: 250px;
+}
+.step-number {
+    background: var(--accent-yellow);
+    color: var(--main-green);
+    font-weight: bold;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    font-size: 1.2rem;
+}
+.step-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+.step-arrow {
+    font-size: 2.5rem;
+    color: var(--accent-green);
+    font-weight: bold;
+}
+.step-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 5px 15px;
+    background-color: var(--main-green);
+    color: var(--white-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.step-link:hover {
+    background-color: var(--accent-green);
+}
+
+/* --- クロージング (closing) --- */
+.closing {
+    background-color: var(--white-color);
+}
+.closing-message {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px;
+}
+.closing-message strong {
+    font-family: var(--font-serif);
+    font-size: 1.2em;
+    color: var(--accent-green);
+}
+.final-cta-box {
+    background: var(--bg-color);
+    border: 3px solid var(--accent-green);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.final-cta-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+.price {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.price span {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--main-green);
+}
+.price small {
+    font-size: 1rem;
+}
+.payment-methods {
+    margin-bottom: 30px;
+    color: #777;
+}
+.final-cta {
+    font-size: 1.2rem;
+}
+
+/* --- Q&A (faq) --- */
+.faq-item {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+.faq-question, .faq-answer {
+    display: flex;
+    font-size: 1.1rem;
+}
+.faq-question span, .faq-answer span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 15px;
+}
+.faq-question span { color: var(--accent-green); }
+.faq-answer span { color: var(--accent-yellow); }
+.faq-answer {
+    margin-top: 10px;
+    background: var(--white-color);
+    padding: 15px;
+    border-radius: 8px;
+}
 
 /* --- フッター (new-footer) --- */
 .new-footer {
@@ -41,8 +446,6 @@
 .copyright-text {
     font-size: 0.875rem; /* 14px */
 }
-
-/* === ここから追記・更新 === */
 
 /* --- 追従ヘッダー (sticky-header) --- */
 .sticky-header {
@@ -88,63 +491,24 @@
     transform: scale(1.05);
 }
 
-
-/* --- おすすめリストのホバーエフェクト --- */
-.recommend-list li {
-    background: var(--bg-color);
-    padding: 20px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border-left: 5px solid var(--accent-green);
-    font-size: 1.1rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* transitionを追加 */
-}
-.recommend-list li:hover {
-    transform: translateY(-5px) scale(1.02); /* ホバー時の動き */
-    box-shadow: 0 8px 15px rgba(0,0,0,0.08); /* 影を追加 */
-}
-.recommend-list li strong {
-    color: var(--main-green);
-    font-size: 1.2rem;
-}
-
-
-/* --- レスポンシブ対応 (スマートフォン) --- */
-@media (max-width: 768px) {
-    /* (中略) */
-    
-    .header-title {
-        font-size: 0.8rem;
-    }
-    .header-cta-button {
-        font-size: 0.8rem;
-        padding: 6px 15px;
-    }
-}
-
-
 /* --- 規約ページ (terms.html) 用スタイル --- */
 .page-header {
     background: var(--bg-color);
     padding: 20px 0;
     border-bottom: 1px solid #e5e5e5;
 }
-
 .back-to-lp-link {
     color: var(--accent-green);
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
 }
-
 .back-to-lp-link:hover {
     color: var(--main-green);
 }
-
 .terms-page {
     background-color: var(--white-color);
 }
-
 .terms-content {
     background: var(--bg-color);
     padding: 30px 40px;
@@ -152,7 +516,6 @@
     border: 1px solid #eee;
     line-height: 1.9;
 }
-
 .terms-content h1 {
     font-family: var(--font-serif);
     font-size: 2rem;
@@ -162,7 +525,6 @@
     border-bottom: 2px solid var(--accent-yellow);
     padding-bottom: 20px;
 }
-
 .terms-content h2 {
     font-family: var(--font-serif);
     font-size: 1.5rem;
@@ -172,21 +534,17 @@
     padding-bottom: 8px;
     border-bottom: 1px solid #ddd;
 }
-
 .terms-content p {
     margin-bottom: 1em;
 }
-
 .terms-content ul {
     list-style: disc;
     padding-left: 25px;
     margin-bottom: 1em;
 }
-
 .terms-content ul li {
     margin-bottom: 0.5em;
 }
-
 .terms-content a {
     color: var(--accent-green);
     text-decoration: underline;
@@ -195,7 +553,6 @@
 .terms-content a:hover {
     color: var(--main-green);
 }
-
 
 /* --- フッターリンクのスタイル --- */
 .footer-links {
@@ -212,9 +569,56 @@
     text-decoration: underline;
 }
 
-
-/* --- 規約ページのレスポンシブ対応 --- */
+/* --- レスポンシブ対応 (スマートフォン) --- */
 @media (max-width: 768px) {
+    .sp-only { display: block; }
+    .pc-only { display: none; }
+    
+    .section-padding { padding: 60px 0; }
+    .section-title { font-size: 1.8rem; }
+
+    .hero {
+        flex-direction: column;
+        padding: 40px 20px;
+        min-height: auto;
+    }
+    .hero-content {
+        max-width: 100%;
+        order: 2;
+        padding: 0;
+    }
+    .hero-title { font-size: 2.2rem; }
+    .hero-image-container {
+        max-width: 80%;
+        order: 1;
+        margin-bottom: 30px;
+    }
+    .hero .cta-button { font-size: 1rem; padding: 12px 30px; }
+    
+    .seminar-grid, .purpose-grid, .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .steps-container {
+        flex-direction: column;
+    }
+    .step-arrow {
+        transform: rotate(90deg);
+        margin: 20px 0;
+    }
+    .final-cta-box {
+        padding: 20px;
+    }
+    .price span { font-size: 2rem; }
+    
+    .header-title {
+        font-size: 0.8rem;
+    }
+    .header-cta-button {
+        font-size: 0.8rem;
+        padding: 6px 15px;
+    }
+
     .terms-content {
         padding: 20px;
     }
