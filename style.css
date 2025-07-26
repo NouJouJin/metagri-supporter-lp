@@ -1,0 +1,227 @@
+/* --- (前回のCSSは省略) --- */
+
+/* --- フッター (new-footer) --- */
+.new-footer {
+    background-color: #121822;
+    color: #94a3b8; /* Tailwindのslate-400に近い色 */
+    padding: 48px 0;
+    text-align: center;
+}
+.footer-logo-container {
+    margin-bottom: 24px;
+}
+.footer-logo-link {
+    display: inline-block;
+    transition: opacity 0.3s;
+}
+.footer-logo-link:hover {
+    opacity: 0.8;
+}
+.footer-logo {
+    height: 40px;
+    margin: 0 auto;
+}
+.footer-sns {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+.sns-link {
+    color: #94a3b8;
+    transition: color 0.3s;
+}
+.sns-link:hover {
+    color: #ffffff;
+}
+.sns-icon {
+    width: 24px;
+    height: 24px;
+}
+.copyright-text {
+    font-size: 0.875rem; /* 14px */
+}
+
+/* === ここから追記・更新 === */
+
+/* --- 追従ヘッダー (sticky-header) --- */
+.sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 10px 0;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease-in-out;
+    visibility: hidden;
+}
+.sticky-header.is-visible {
+    transform: translateY(0);
+    visibility: visible;
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-title {
+    font-weight: bold;
+    color: var(--main-green);
+}
+.header-cta-button {
+    background: var(--accent-green);
+    color: var(--white-color);
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 8px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.header-cta-button:hover {
+    background-color: var(--main-green);
+    transform: scale(1.05);
+}
+
+
+/* --- おすすめリストのホバーエフェクト --- */
+.recommend-list li {
+    background: var(--bg-color);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border-left: 5px solid var(--accent-green);
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* transitionを追加 */
+}
+.recommend-list li:hover {
+    transform: translateY(-5px) scale(1.02); /* ホバー時の動き */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.08); /* 影を追加 */
+}
+.recommend-list li strong {
+    color: var(--main-green);
+    font-size: 1.2rem;
+}
+
+
+/* --- レスポンシブ対応 (スマートフォン) --- */
+@media (max-width: 768px) {
+    /* (中略) */
+    
+    .header-title {
+        font-size: 0.8rem;
+    }
+    .header-cta-button {
+        font-size: 0.8rem;
+        padding: 6px 15px;
+    }
+}
+
+
+/* --- 規約ページ (terms.html) 用スタイル --- */
+.page-header {
+    background: var(--bg-color);
+    padding: 20px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.back-to-lp-link {
+    color: var(--accent-green);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.back-to-lp-link:hover {
+    color: var(--main-green);
+}
+
+.terms-page {
+    background-color: var(--white-color);
+}
+
+.terms-content {
+    background: var(--bg-color);
+    padding: 30px 40px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    line-height: 1.9;
+}
+
+.terms-content h1 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--main-green);
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 2px solid var(--accent-yellow);
+    padding-bottom: 20px;
+}
+
+.terms-content h2 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--accent-green);
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.terms-content p {
+    margin-bottom: 1em;
+}
+
+.terms-content ul {
+    list-style: disc;
+    padding-left: 25px;
+    margin-bottom: 1em;
+}
+
+.terms-content ul li {
+    margin-bottom: 0.5em;
+}
+
+.terms-content a {
+    color: var(--accent-green);
+    text-decoration: underline;
+    font-weight: bold;
+}
+.terms-content a:hover {
+    color: var(--main-green);
+}
+
+
+/* --- フッターリンクのスタイル --- */
+.footer-links {
+    margin-bottom: 20px;
+}
+.footer-links a {
+    color: #94a3b8; /* slate-400 */
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+.footer-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+
+/* --- 規約ページのレスポンシブ対応 --- */
+@media (max-width: 768px) {
+    .terms-content {
+        padding: 20px;
+    }
+    .terms-content h1 {
+        font-size: 1.6rem;
+    }
+    .terms-content h2 {
+        font-size: 1.3rem;
+    }
+}
